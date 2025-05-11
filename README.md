@@ -17,6 +17,7 @@ My Github repository for my VPN project
 - 'server.conf' - OpenVPN server configuration
 - 'client1.ovpn' - OpenVPN client configuration
 - 'documentation.pdf' - Project documentation
+- 'setup_script.sh' - Bash script for automatic configuration
 
 # How to Connect
 Use the provided '.ovpn' file in on the OpenVPN client. Ensure UDP port 1194 is open.
