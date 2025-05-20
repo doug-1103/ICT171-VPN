@@ -27,10 +27,10 @@ This project aims to use Infrastructure as a Service (IaaS) in order to deploy a
 Steps:
 - Log into AWS Console
 - Launch EC2 instance with:
-       - Ubuntu 24.04
-       - T2.micro
-       - Assign Elastic IP
-       - Attach Custom Security Group
+- Ubuntu 24.04
+- T2.micro
+- Assign Elastic IP
+- Attach Custom Security Group
 Security Group Rules:
 |Protocol|Port|Source      |      Reason      |
 |--------|----|------------|------------------|
