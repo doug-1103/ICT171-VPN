@@ -38,3 +38,10 @@ Security Group Rules:
 |SSH     | 22     | My Ip Only   | Remote Management|
 |OpenVPN |1194(UDP| Anywhere IPv4| VPN Connections  |
 |ICMP    | All    | Anywhere IPv4| Test Connectivity|
+
+## Server Configuration
+In this section we configure the server by updating the server and installing the necessary packages, including the OpenVPN and EasyRSA packages.
+
+# SSH into the EC2 server
+Use the following command replacing the path, file name and IP address with the necessary values:
+''' ssh -i your-key.pem ubuntu@[your-elastic-ip] '''
