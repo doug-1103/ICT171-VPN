@@ -31,6 +31,7 @@ Steps:
 - T2.micro
 - Assign Elastic IP
 - Attach Custom Security Group
+
 Security Group Rules:
 |Protocol|Port|Source      |      Reason      |
 |--------|----|------------|------------------|
