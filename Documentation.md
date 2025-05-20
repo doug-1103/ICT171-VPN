@@ -47,3 +47,8 @@ Use the following command replacing the path, file name and IP address with the 
 ```bash 
 ssh -i your-key.pem ubuntu@[your-elastic-ip]
 ```
+### Update Server
+We will use the following command to update and prepare the server.
+```bash
+sudo apt update && sudo apt upgrade -y
+```
