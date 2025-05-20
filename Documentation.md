@@ -44,4 +44,4 @@ In this section we configure the server by updating the server and installing th
 
 # SSH into the EC2 server
 Use the following command replacing the path, file name and IP address with the necessary values:
-<pre> '''bash ssh -i your-key.pem ubuntu@[your-elastic-ip] ''' </pre>
+<pre> ```bash ssh -i your-key.pem ubuntu@[your-elastic-ip] ``` </pre>
