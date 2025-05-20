@@ -32,6 +32,6 @@ Steps:
        - Assign Elastic IP
        - Attach Custom Security Group
 Security Group Rules:
-|Protocol|Port|Source|Reason    |
-|--------|----|------|----------|
-|SSH     | 22 | My Ip Only| Remote Management
+|Protocol|Port|Source      |      Reason      |
+|--------|----|------------|------------------|
+|SSH     | 22 | My Ip Only | Remote Management|
