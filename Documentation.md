@@ -33,6 +33,8 @@ Steps:
 - Attach Custom Security Group
 
 Security Group Rules:
-|Protocol|Port|Source      |      Reason      |
-|--------|----|------------|------------------|
-|SSH     | 22 | My Ip Only | Remote Management|
+|Protocol|Port    |Source        |      Reason      |
+|--------|--------|--------------|------------------|
+|SSH     | 22     | My Ip Only   | Remote Management|
+|OpenVPN |1194(UDP| Anywhere IPv4| VPN Connections  |
+|ICMP    | All    | Anywhere IPv4| Test Connectivity|
