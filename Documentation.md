@@ -42,7 +42,7 @@ Security Group Rules:
 ## Server Configuration
 In this section we configure the server by updating the server and installing the necessary packages, including the OpenVPN and EasyRSA packages.
 
-# SSH into the EC2 server
+### SSH into the EC2 server
 Use the following command replacing the path, file name and IP address with the necessary values:
 ```bash 
 ssh -i your-key.pem ubuntu@[your-elastic-ip]
