@@ -210,15 +210,24 @@ Now that the OpenVPN server is running and the domain name is associated we need
 - ca.crt (This is the certificate authority)
 - client1.crt (This is the devices unique certificate)
 - client1.key (The devices private key)
-- client1.ovpn (This is the client configuration file)
 
 ### Client configuration .ovpn file
+A .ovpn fiile used for client configuration is able to be downloaded from this repository. [Download .ovpn file](./client1.ovpn)
+
+## Copying certificate files to local device
+The certificate files need to be copied using Secure Copy Protocol (scp) to the local device. On the local devices terminal enter the following commands, changing the path, key.pem and IP address to the appropriate values.
+```bash
+scp -i path/to/key.pem 'ubuntu@<IPaddress>: /home/ubuntu/openvpn-ca/pki/ca.crt' ca.crt
+scp -i path/to/key.pem 'ubuntu@<IPaddress>: /home/ubuntu/openvpn-ca/pki/issued/client1.crt' client1.crt
+scp -i path/to/key.pem 'ubuntu@<IPaddress>: /home/ubuntu/openvpn-ca/pki/private/client1.key' client1.key
+```
+
+## Connecting to the OpenVPN server
+To connect to the OpenVPN server we need to download the OpenVPN GUI and import the client1.ovpn file.
+[Download the OpenVPN GUI](https://openvpn.net/community-downloads/)
 
 
-
-
-
-
+![image](https://github.com/user-attachments/assets/646eeb15-0bea-41e2-aef4-a6f53a365e83)
 
 
 
