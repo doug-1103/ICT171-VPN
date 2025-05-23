@@ -83,3 +83,143 @@ The next commands create the client certificates.
 ./easyrsa gen-req client1 nopass
 ./easyrsa sign-req client client1
 ```
+
+### Generate Diffie-Hellman key
+The following command creates the Diffie-Hellman key for establishing a shared secret key
+```bash
+./easyrsa gen-dh
+```
+
+### Move Files
+After the appropriate keys have been created, they need to be moved into the OpenVPN directory for OpenVPN to recognise them. The following command moves the necessary keys. The files we want to move are:
+- ca.crt
+- server.crt
+- server.key
+- dh.pem
+```bash
+sudo cp pki/ca.crt pki/issued/server.crt pki/private/server.key pki/dh.pem /etc/openvpn/
+```
+
+### Server Configuration File
+A server.conf file needs to be allocated, a template of this is available in this GitHUB repository.
+[Download server.conf](./server.conf)
+
+Alternatively a sample copy is provided and can be copied into the OpenVPN directory.
+```bash
+sudo cp /usr/share/doc/openvpn/examples/sample-config-files/server.conf /etc/openvpn/server.conf
+```
+Next we need to ensure that the directives point to the correct files by opening the file with:
+```bash
+sudo nano etc/openvpn/server.conf
+```
+Ensure that the directives point to the following files:
+```bash
+ca ca.crt
+cert server.crt
+key server.key
+dh dh.pem
+```
+Uncomment the following command to ensure that all internet traffic is redirected.
+```bash
+push "redirect-gateway def1 bypass-dhcp"
+```
+
+### IP Forwarding
+Next IP forwarding needs to be enabled to allow the OpenVPN server to route traffic from the VPN clients to the internet.
+
+### Enable IP Forwarding
+In the terminal open the file with the following command
+```bash
+sudo nano /etc/sysctl.conf
+```
+Ensure that the following line is uncommented.
+```bash
+net.ipv4.ip_forward=1
+```
+Enter the following command into the terminal.
+```bash
+sudo sysctl -p
+```
+
+### Configure iptables
+The following command allows for Network Address Translation (NAT) to allow traffic from connected VPN clients to be rewritten to appear to come from the VPN server.
+```bash
+sudo iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o
+```
+## Configure UFW firewall
+Allow SSH and OpenVPN on the UFW firewall.
+```bash
+sudo ufw allow ssh
+sudo ufw allow 1194/udp
+```
+### Enable IP forwarding through UFW
+Open the UFW configuration file with
+```bash
+sudo nano /etc/ufw/before.rules
+```
+At the top before any *filter lines, add.
+```bash
+*nat
+:POSTROUTING ACCEPT [0:0]
+-A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+COMMIT
+```
+### Ensure UFW forwards packets
+Edit:
+```bash
+sudo nano /etc/default/ufw
+```
+Ensure the following is set:
+```bash
+DEFAULT_FORWARD_POLICY="ACCEPT"
+```
+
+### Enable UFW
+```bash
+sudo ufw enable
+```
+
+## Start OpenVPN Server
+Use the following commands to start the OpenVPN server.
+```bash
+sudo systemctl start openvpn@server
+sudo systemctl enable openvpn@server
+```
+Check the status with.
+```bash
+sudo systemctl status openvpn@server
+```
+
+## Domain Name Configuration
+Having a Domain Name allocated for our server will ensure that configuration files that require the servers public IP address won't change after a shutdown or restart of the server.
+### Setup AWS Route 53:
+- Register a domain via Route 53. The following is the registered domain name for the server.
+  - ict-171-openvpnproject.com
+- Create a Hosted Zone in Route 53.
+- Add an A record that points to the EC2 IP address with the following values.
+  - Record Name: (Blank)
+  - Record Type: A record
+  - Value: 16.176.9.234 (Servers Elastic IP address)
+- Test connectivity by pinging the allocated domain name:
+```bash
+ping ict-171-openvpnproject.com
+```
+
+## Client Configuration
+Now that the OpenVPN server is running and the domain name is associated we need to configure client device by copying the necessary certification files to the client device and creating a client .ovpn file. The files we need to copy are:
+- ca.crt (This is the certificate authority)
+- client1.crt (This is the devices unique certificate)
+- client1.key (The devices private key)
+- client1.ovpn (This is the client configuration file)
+
+### Client configuration .ovpn file
+
+
+
+
+
+
+
+
+
+
