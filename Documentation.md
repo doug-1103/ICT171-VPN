@@ -249,7 +249,8 @@ From these screenshots we can see that we are tunnelling to our OpenVPN server w
 
 ## Coding/Scripting Component
 For my scripting component, I have created a status checker for the VPN that parses through the VPN logs with awk commands and then creates a new log file with the information on current connected users. In the log file it echoes the current users connected, bandwidth and how long they have been connected for.
-The bash file of this script is available in the GIThub repository [here](./vpn_status.sh)
+The bash file of this script is available in the GIThub repository [here](./vpn_status.sh).
+After installing the bash script on the 
 
 
 
