@@ -225,9 +225,19 @@ scp -i path/to/key.pem 'ubuntu@<IPaddress>: /home/ubuntu/openvpn-ca/pki/private/
 ## Connecting to the OpenVPN server
 To connect to the OpenVPN server we need to download the OpenVPN GUI and import the client1.ovpn file.
 [Download the OpenVPN GUI](https://openvpn.net/community-downloads/)
-
-
+To import the client1.ovpn file, right click on the icon and click import file, once the file is imported right click again and press connect.
 ![image](https://github.com/user-attachments/assets/646eeb15-0bea-41e2-aef4-a6f53a365e83)
+After successfully connecting it should show the following.
+![image](https://github.com/user-attachments/assets/6cd49002-4e28-443f-bcac-8cebfd1dbe7c)
+We can further test connectivity by visiting "Whats My Ip Address" [here](https://whatsmyipaddress.com). We can see it shows the following.
+![image](https://github.com/user-attachments/assets/caf4ea6d-9403-4f4a-a601-9dc0d9c5ada1)
+From these screenshots we can see that we are tunnelling to our OpenVPN server with our local IP address, we are then connecting to the internet from the servers Elastic IP address of 52.65.222.69. This is further corroborated by the ISP being outlined as Amazon Technologies Inc.
+
+## Coding/Scripting Component
+For my scripting component, I have created a status checker for the VPN that parses through the VPN logs with awk commands and then creates a new log file with the information on current connected users. In the log file it echoes the current users connected, bandwidth and how long they have been connected for.
+The bash file of this script is available in the GIThub repository [here](./vpn_status.sh)
+
+
 
 
 
