@@ -250,8 +250,33 @@ From these screenshots we can see that we are tunnelling to our OpenVPN server w
 ## Coding/Scripting Component
 For my scripting component, I have created a status checker for the VPN that parses through the VPN logs with awk commands and then creates a new log file with the information on current connected users. In the log file it echoes the current users connected, bandwidth and how long they have been connected for.
 The bash file of this script is available in the GIThub repository [here](./vpn_status.sh).
-After installing the bash script on the 
+After installing the bash script on the server, it is necessary to make it change the permissions to make it executable with:
+```bash
+chmod (placeholder)
+```
+To get the most benefit out of this script ensuring that it runs at frequent times using Cron is also important. To do this we first open the root user's crontab with:
+```bash
+sudo crontab -e
+```
+and add the following line to ensure the script runs every hour.
+```bash
+0 * * * * /home/ubuntu/vpn_status.sh
+```
 
+## Webpage component
+Hosting a webpage that allows users availability to download the documentation, client files and link to the OpenVPN GUI. This webpage will have a couple distinct features:
+- Will require a password login to ensure only authorised users are able to download sensitive files.
+- A brief summary of the key components of the OpenVPN project.
+- A downloadable documentation.
+- Downloadable client files.
+- Link to the OpenVPN GUI.
+- Encrypted with Transport Layer Security (TLS).
+
+### Installing Apache
+To host a webpage, the necessary packages are required to be downloaded first. This can be done with:
+```bash
+sudo apt install apache2
+```
 
 
 
