@@ -277,6 +277,88 @@ To host a webpage, the necessary packages are required to be downloaded first. T
 ```bash
 sudo apt install apache2
 ```
+### Webpage creation
+The index.html file is available in the Github repository [here](./index.html).
+
+### Moving .html file to remote server
+To upload the index.html file to the remote server we will use Secure Copy Protocol (scp). We want to ensure that we copy it into the /var/www/html file, over riding the current index.html file. On the local devices terminal use.
+```bash
+placeholder
+```
+### Uploading files to the webserver
+Next the documentation.pdf file and client configuration files need to be uploaded.
+First make a directory on the remote device with.
+```bash
+sudo mkdir /var/www/html/files
+```
+The documentation.pdf file is able to be downloaded [here](./documentation.pdf). On the local devices terminal use SCP to upload it to the newly created directory.
+```bash
+placeholder
+```
+
+Next on the remote device, move the client1.ovpn file and the ca.crt file into the html/file directory with.
+```bash
+sudo cp client1.ovpn var/www/html/files
+sudo cp ca.crt var/www/html/files
+```
+
+### Password Protecting Website
+The website should ask for a password before allowing users access to the page in order to protect from unauthorised users downloading the client files and being able to connect to the VPN. To do this, the htpasswd utility needs to be downloaded, a password file created and the apache site configuration file edited.
+
+### Downloading htpasswd utility
+Download the htpasswd utility with.
+```bash
+sudo apt install apache2-utils
+```
+
+### Create the password file
+This file will store the username and hashed passwords. Create it with:
+```bash
+sudo htpasswd -c /etc/apache2/.htpasswd ICT171VPN
+```
+This will prompt for a password, this will be the password that users will use to gain access to the web server.
+
+### Edit Apache site configuration
+Open the site configuration file with:
+```bash
+sudo nano /etc/apache2/sites-available/000-default.conf
+```
+Inside the <VirtualHost *:80> block add the following block of code inside the <Directory /var/www/html> </Directory> block.
+```bash
+    AuthType Basic
+    AuthName "Private Access"
+    AuthUserFile /etc/apache2/.htpasswd
+    Require valid-user
+```
+Restart Apache to initialise the changes with.
+```bash
+sudo systemctl restart apache2
+```
+
+### Encrypting website with TLS
+The Transport Layer Security (TLS) Protocol encrypts data sent between the client and server. This ensures that the data such as passwords, config files or documentation PDF cannot be intercepted by third parties. For this webpage Certbot will be used to handle TLS authentication.
+
+### Installing Certbot
+Run
+```bash
+sudo apt install certbot python3-certbot-apache -y
+```
+to install the certbot package on the server.
+
+### Requesting Certificates
+Use the following command to initiate the certificate process.
+```bash
+sudo certbot --apache
+```
+Enter the domain name (ict-171-openvpnproject.com), accept the terms and redirect all traffic to HTTPS when prompted.
+
+### Testing
+To test whether TLS has succesfully been initialised on the server, the webserver should be accessible from [https://ict-171-openvpnproject.com](https://ict-171-openvpnproject.com) 
+
+
+
+
+
 
 
 
