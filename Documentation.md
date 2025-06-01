@@ -254,7 +254,7 @@ For my scripting component, I have created a status checker for the VPN that par
 The bash file of this script is available in the GIThub repository [here](./vpn_status.sh).
 After installing the bash script on the server, it is necessary to make it change the permissions to make it executable with:
 ```bash
-chmod (placeholder)
+chmod 755 vpn_status.sh
 ```
 To get the most benefit out of this script ensuring that it runs at frequent times using Cron is also important. To do this we first open the root user's crontab with:
 ```bash
@@ -285,7 +285,7 @@ The index.html file is available in the Github repository [here](./index.html).
 ### Moving .html file to remote server
 To upload the index.html file to the remote server we will use Secure Copy Protocol (scp). We want to ensure that we copy it into the /var/www/html file, over riding the current index.html file. On the local devices terminal use.
 ```bash
-placeholder
+scp -i path/to/key.pem index.html ubuntu@IPADDRESS
 ```
 ### Uploading files to the webserver
 Next the documentation.pdf file and client configuration files need to be uploaded.
@@ -295,7 +295,7 @@ sudo mkdir /var/www/html/files
 ```
 The documentation.pdf file is able to be downloaded [here](./documentation.pdf). On the local devices terminal use SCP to upload it to the newly created directory.
 ```bash
-placeholder
+scp -i path/to/key.pem documentation.pdf ubuntu@IPADDRESS
 ```
 
 Next on the remote device, move the client1.ovpn file and the ca.crt file into the html/file directory with.
@@ -360,10 +360,15 @@ To test whether TLS has succesfully been initialised on the server, the webserve
 ## Conclusion
 This documentation outlines the process that was used to configure an OpenVPN cloud server using the Command Line Interface. Because the open source OpenVPN community edition was used all certificates had to be made through the command line interface (CLI) with Easy-RSA. This project has the potential for further development including; an automatic setup script that automatically configures the server and a password protected web browser that allows more users to be added easily.  
 
-##References
-- https://documentation.ubuntu.com/server/how-to/security/install-openvpn/index.html
-- https://openvpn.net/community-resources/how-to/
-- https://openvpn.net/as-docs/system-requirements.html#software-requirements
+## References
+[1] Ubuntu Documentation, “Install OpenVPN,” Ubuntu Server Documentation, May 2023. [Online]. Available: https://documentation.ubuntu.com/server/how-to/security/install-openvpn/index.html
+[Accessed: May 20, 2025].
+
+[2] OpenVPN, “OpenVPN How-To,” OpenVPN Community Resources. [Online]. Available: https://openvpn.net/community-resources/how-to/
+[Accessed: May 20, 2025].
+
+[3] OpenVPN, “System Requirements – Software Requirements,” OpenVPN Access Server Documentation. [Online]. Available: https://openvpn.net/as-docs/system-requirements.html#software-requirements
+[Accessed: May 20, 2025].
 
 
 
