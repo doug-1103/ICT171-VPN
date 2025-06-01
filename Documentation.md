@@ -9,7 +9,9 @@ Structure:
 - Security Hardening (basic UFW rules)
 - Testing VPN Connection
 - Coding/Scripting Component
+- Webpage Component
 - Conclusion
+- References
 
 ## Introduction
 This project aims to use Infrastructure as a Service (IaaS) in order to deploy an OpenVPN server using AWS EC2 to provide secure VPN access. We will be using Route 53 to link a domain name to our server. We will also be using EasyRSA in order to handle the creation of the necessary certificates. The reasons for choosing OpenVPN are:
@@ -353,7 +355,16 @@ sudo certbot --apache
 Enter the domain name (ict-171-openvpnproject.com), accept the terms and redirect all traffic to HTTPS when prompted.
 
 ### Testing
-To test whether TLS has succesfully been initialised on the server, the webserver should be accessible from [https://ict-171-openvpnproject.com](https://ict-171-openvpnproject.com) 
+To test whether TLS has succesfully been initialised on the server, the webserver should be accessible from [https://ict-171-openvpnproject.com](https://ict-171-openvpnproject.com).
+
+## Conclusion
+This documentation outlines the process that was used to configure an OpenVPN cloud server using the Command Line Interface. Because the open source OpenVPN community edition was used all certificates had to be made through the command line interface (CLI) with Easy-RSA. This project has the potential for further development including; an automatic setup script that automatically configures the server and a password protected web browser that allows more users to be added easily.  
+
+##References
+- https://documentation.ubuntu.com/server/how-to/security/install-openvpn/index.html
+- https://openvpn.net/community-resources/how-to/
+- https://openvpn.net/as-docs/system-requirements.html#software-requirements
+
 
 
 
