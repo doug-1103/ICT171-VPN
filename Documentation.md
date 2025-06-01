@@ -3,11 +3,14 @@
 Structure:
 - Introduction
 - System Requirements
-- Server Provisioning (AWS Setup)
-- OpenVPN Installation and Configuration
-- Domain Configuration (Route 53 Setup)
-- Security Hardening (basic UFW rules)
-- Testing VPN Connection
+- Server Creation
+- Server Configuration
+- VPN Server Configuration
+- Configure UFW Firewall
+- Start OpenVPN Server
+- Domain Name Configuration
+- Client Configuration
+- Connecting to the OpenVPN Server
 - Coding/Scripting Component
 - Webpage Component
 - Conclusion
