@@ -68,8 +68,8 @@ sudo apt install easy-rsa -y
 ### Setup Certificate Authority
 The following commands create the Certificate Authority (CA) on the server to securely manage and sign the certificates that OpenVPN needs for authenticating the server and clients.
 ```bash
-make-cadir~/openvpn -ca
-cd~/openvpn -ca
+make-cadir ~/openvpn -ca
+cd ~/openvpn -ca
 ./easyrsa init-pki
 ./easyrsa build-ca nopass
 ```
@@ -149,7 +149,7 @@ sudo sysctl -p
 ### Configure iptables
 The following command allows for Network Address Translation (NAT) to allow traffic from connected VPN clients to be rewritten to appear to come from the VPN server.
 ```bash
-sudo iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o
+sudo iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o enX0 -j MASQUERADE
 ```
 ## Configure UFW firewall
 Allow SSH and OpenVPN on the UFW firewall.
