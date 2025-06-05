@@ -1,4 +1,14 @@
 # ICT171-VPN
+Link To Website:
+https://ict-171-openvpnproject.com/
+Username: ICT171VPN
+Password: 0p4nV9nICT-171
+
+To Access VPN:
+- Download client1.ovpn and ca.crt file from website.
+- Download the OpenVPN Community Edition GUI through the link provided on the website.
+- Import the client1.ovpn file as shown in the documentation.
+- Click connect and it shall successfully initialise.
 My Github repository for my VPN project
 
 # Author
