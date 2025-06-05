@@ -252,9 +252,14 @@ We can further test connectivity by visiting "Whats My Ip Address" [here](https:
 
 From these screenshots we can see that we are tunnelling to our OpenVPN server with our local IP address, we are then connecting to the internet from the servers Elastic IP address of 52.65.222.69. This is further corroborated by the ISP being outlined as Amazon Technologies Inc.
 
-## Coding/Scripting Component
+# Coding/Scripting Component
 For my scripting component, I have created a status checker for the VPN that parses through the VPN logs with awk commands and then creates a new log file with the information on current connected users. In the log file it echoes the current users connected, bandwidth and how long they have been connected for.
 The bash file of this script is available in the GIThub repository [here](./vpn_status.sh).
+This script executes the desired output in the following steps:
+- Using an if sudo systemctl is-active statement in order to check if the VPN service is running. It echoes RUNNING or NOT RUNNING to the log file.
+- Using an if statement to check if the status log file exists or not.
+- Next using an awk command to extract the connected client information and echoing this information to the log file.
+
 After installing the bash script on the server, it is necessary to make it change the permissions to make it executable with:
 ```bash
 chmod 755 vpn_status.sh
@@ -268,7 +273,7 @@ and add the following line to ensure the script runs every hour.
 0 * * * * /home/ubuntu/vpn_status.sh
 ```
 
-## Webpage component
+# Webpage component
 Hosting a webpage that allows users availability to download the documentation, client files and link to the OpenVPN GUI. This webpage will have a couple distinct features:
 - Will require a password login to ensure only authorised users are able to download sensitive files.
 - A brief summary of the key components of the OpenVPN project.
@@ -307,7 +312,7 @@ sudo cp client1.ovpn var/www/html/files
 sudo cp ca.crt var/www/html/files
 ```
 
-### Password Protecting Website
+## Password Protecting Website
 The website should ask for a password before allowing users access to the page in order to protect from unauthorised users downloading the client files and being able to connect to the VPN. To do this, the htpasswd utility needs to be downloaded, a password file created and the apache site configuration file edited.
 
 ### Downloading htpasswd utility
@@ -340,8 +345,10 @@ Restart Apache to initialise the changes with.
 sudo systemctl restart apache2
 ```
 
-### Encrypting website with TLS
-The Transport Layer Security (TLS) Protocol encrypts data sent between the client and server. This ensures that the data such as passwords, config files or documentation PDF cannot be intercepted by third parties. For this webpage Certbot will be used to handle TLS authentication.
+## Encrypting website with TLS
+The Transport Layer Security (TLS) Protocol encrypts data sent between the client and server. This ensures that the data such as passwords, config files or documentation PDF cannot be intercepted by third parties. For this webpage Certbot/Lets Encrypt will be used to handle TLS authentication. Lets Encrypt allows us to automate the process of enabling TLS encryption on our web server. It is done in a 2 step process:
+- Installing Certbot
+- Requesting Certificates.
 
 ### Installing Certbot
 Run
@@ -372,6 +379,9 @@ This documentation outlines the process that was used to configure an OpenVPN cl
 
 [3] OpenVPN, “System Requirements – Software Requirements,” OpenVPN Access Server Documentation. [Online]. Available: https://openvpn.net/as-docs/system-requirements.html#software-requirements
 [Accessed: May 20, 2025].
+
+[4][4] M. Cantillon, “How To Secure Apache with Let’s Encrypt on Ubuntu,” DigitalOcean Tutorials, Aug. 17, 2022. [Online]. Available: https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu
+[Accessed: May 25, 2025]
 
 
 
