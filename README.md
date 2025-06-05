@@ -1,8 +1,8 @@
 # ICT171-VPN
 Link To Website:
 https://ict-171-openvpnproject.com/
-Username: ICT171VPN
-Password: 0p4nV9nICT-171
+- Username: ICT171VPN
+- Password: 0p4nV9nICT-171
 
 To Access VPN:
 - Download client1.ovpn and ca.crt file from website.
