@@ -9,7 +9,6 @@ To Access VPN:
 - Download the OpenVPN Community Edition GUI through the link provided on the website.
 - Import the client1.ovpn file as shown in the documentation.
 - Click connect and it shall successfully initialise.
-My Github repository for my VPN project
 
 # Author
 - Douglas Phillip
@@ -26,8 +25,9 @@ My Github repository for my VPN project
 # Repository Contents
 - 'server.conf' - OpenVPN server configuration
 - 'client1.ovpn' - OpenVPN client configuration
-- 'documentation.pdf' - Project documentation
-- 'setup_script.sh' - Bash script for automatic configuration
+- 'documentation.md' - Project documentation markdown.
+- 'vpn_status_script.sh' - VPN status logger
+- 'index.html' - The HTML script for the webpage component
 
 # How to Connect
 Use the provided '.ovpn' file in on the OpenVPN client. Ensure UDP port 1194 is open.
