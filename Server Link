@@ -1,8 +1,0 @@
-# Server Access Details
-
-**Public IP** 52.65.222.69
-**Domain Name** ict-171-openvpnproject.com
-**VPN Protocol** OpenVPN (UDP 1194)
-**Client Config File** [Download Here](./client-configs/client.ovpn)
-
-Connect using the OpenVPN GUI. Instructions are in the documentation.
