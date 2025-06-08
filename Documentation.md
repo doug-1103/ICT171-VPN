@@ -380,10 +380,12 @@ This documentation outlines the process that was used to configure an OpenVPN cl
 [3] OpenVPN, “System Requirements – Software Requirements,” OpenVPN Access Server Documentation. [Online]. Available: https://openvpn.net/as-docs/system-requirements.html#software-requirements
 [Accessed: May 20, 2025].
 
-[4][4] M. Cantillon, “How To Secure Apache with Let’s Encrypt on Ubuntu,” DigitalOcean Tutorials, Aug. 17, 2022. [Online]. Available: https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu
+[4] M. Cantillon, “How To Secure Apache with Let’s Encrypt on Ubuntu,” DigitalOcean Tutorials, Aug. 17, 2022. [Online]. Available: https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu
 [Accessed: May 25, 2025]
 
+[5] Canonical. "Install and configure Apache," Ubuntu Tutorials, https://ubuntu.com/tutorials/install-and-configure-apache#1-overview
 
+[6] DigitalOcean. "How To Set Up Password Authentication with Apache on Ubuntu 20.04," DigitalOcean Community Tutorials, https://www.digitalocean.com/community/tutorials/how-to-set-up-password-authentication-with-apache-on-ubuntu-20-04
 
 
 
