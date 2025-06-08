@@ -5,7 +5,7 @@ https://ict-171-openvpnproject.com/
 - Password: 0p4nV9nICT-171
 
 ## Link To Video Explainer:
-- https://youtu.be/C2kAhs2R20U
+- https://youtu.be/ZayiCVoYp5Q
 
 To Access VPN:
 - Download client1.ovpn and ca.crt file from website.
